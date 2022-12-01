@@ -8,7 +8,7 @@
                 >FireBlogs</router-link>
             </div>
             <div class="nav-links">
-                <ul>
+                <ul v-show="!mobile">
                     <router-link class="link" to="#">Home</router-link>                
                     <router-link class="link" to="#">Blogs</router-link> 
                         <router-link class="link" to="#">Create Post</router-link>                
@@ -19,10 +19,10 @@
                    
             </div>
         </nav>
-        <menuIcon class="menu-icon" />
+        <menuIcon class="menu-icon" @click="toggleMobileNav"  v-show="mobile"/>
         <transition name="mobile-nav">
 
-                  <ul class="mobile-nav">
+                  <ul class="mobile-nav" v-show="mobileNav">
                     <router-link class="link" to="#">Home</router-link>                
                     <router-link class="link" to="#">Blogs</router-link> 
                         <router-link class="link" to="#">Create Post</router-link>                
@@ -60,14 +60,16 @@ export default {
             this.mobileNav= false;
             return; 
         },
+         toggleMobileNav(){
+            this.mobileNav= !this.mobileNav
+        }
+    },
         created(){
           window.addEventListener('resize',this.checkScreen);
           this.checkScreen();
         },
-        toggleMobileNav(){
-            this.mobileNav= !this.mobileNav
-        }
-    }
+       
+    
 
 }
 </script>
@@ -146,6 +148,21 @@ nav{
         color:white;
     }
 }
+.mobile-nav-enter-active,
+.mobile-nav-leave-active
+{
+   transition:all 1s ease;
+}
+.mobile-nav-enter{
+    transform: translateX(-250px);
+}
+.mobile-nav-enter-to{
+    transform: translateX(0);
+}
+.mobile-nav-leave-to{
+    transform: translateX(-250px);
+}
+
 
 
 }

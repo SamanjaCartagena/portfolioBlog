@@ -3,16 +3,18 @@
     <div class="app">
       <navigation></navigation>
       <router-view />
+      <the-footer></the-footer>
     </div>
   </div>
 </template>
 
 <script>
 import Navigation from './components/TheNavigation.vue'
+import TheFooter from './components/TheFooter.vue'
 export default {
   name: "app",
   components: {
-    Navigation
+    Navigation, TheFooter
   },
   data() {
     return {};
