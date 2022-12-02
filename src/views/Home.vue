@@ -1,12 +1,24 @@
 <template>
   <div class="home">
+    <BlogPost :post="welcomeScreen"/>
+    <BlogPost :post="post" v-for="(post,index) in sampleBlogPost" :key="index"/>
+    <div class="blog-card-wrap">
+      <div class="container">
+        <h3>View more recent Blogs</h3>
+        <div class="blog-cards">
+         <blog-card :post="post" v-for="(post,index) in sampleBlogCards" :key="index"></blog-card>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import BlogPost from '../components/BlogPost.vue'
+import BlogCard from '../components/BlogCard.vue'
 export default {
   name: "Home",
-  components: {},
+  components: {BlogPost, BlogCard},
   data(){
     return {
       welcomeScreen:{
@@ -15,18 +27,35 @@ export default {
         welcomeScreen:true,
         photo:"coding"
       },
-      simpleBlogPost:[
+      sampleBlogPost:[
         {
-          title:"Title",
-          blogHTML:"This is a filler blog post title",
+          title:"This is a Filler Title!",
+          blogHTML:"This is a filler blog post title!",
           blogCoverPhoto:"beautiful-stories"
         },{
-          title:"Filler Title",
-          blogHTML:"This is a filler blog",
-          blogCoverPhoto:"designed for everyone"
+          title:"This is a Filler Title2!",
+          blogHTML:"This is a filler blog post title",
+          blogCoverPhoto:"designed-for-everyone"
         }
       ],
+      sampleBlogCards:[
+        {blogTitle:"Blog Card #1", blogCoverPhoto:"stock-1", blogDate:"May 1, 2021"},
+        {blogTitle:"Blog Card #2", blogCoverPhoto:"stock-2", blogDate:"May 1, 2021"},
+        {blogTitle:"Blog Card #3", blogCoverPhoto:"stock-3", blogDate:"May 1, 2021"},
+        {blogTitle:"Blog Card #4", blogCoverPhoto:"stock-4", blogDate:"May 1, 2021"},
+
+      ]
     }
   }
 };
 </script>
+<style lang="scss" scoped>
+.blog-card-wrap{
+  h3{
+    font-weight:300;
+    font-size:28px;
+    margin-bottom:32px;
+  }
+}
+
+</style>
