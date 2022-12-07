@@ -15,7 +15,11 @@
                     <router-link class="link" :to="{name:'Login'}">Login/Register</router-link> 
 
                 </ul>               
-                 
+                 <div class="profile" ref="profile">
+
+                    <span>{{this.$store.state.profileInitials}}</span>
+                    <div class="profile-menu"></div>
+                 </div>
                    
             </div>
         </nav>

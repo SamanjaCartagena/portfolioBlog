@@ -60,22 +60,22 @@ export default {
     },
     data(){
         return {
-            firstName:null,
-            lastName:null,
-            username:null,
-            email:null,
-            password:null,
-            error:null,
+            firstName:"",
+            lastName:"",
+            username:"",
+            email:"",
+            password:"",
+            error:"",
             errorMsg:""
         }
     },
     methods:{
       async register(){
         if(
-            this.email !== ""||
-            this.password !== ""||
-            this.firstName !== "" ||
-            this.lastName !== "" ||
+            this.email !== ""&&
+            this.password !== "" &&
+            this.firstName !== "" &&
+            this.lastName !== "" &&
             this.username !== ""
         ){
             this.error = false;
