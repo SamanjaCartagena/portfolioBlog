@@ -43,6 +43,15 @@ export default new Vuex.Store({
        state.profileFirstName.match(/(\b\S)?/g).join("")+
        state.profileLastName.match(/(\b\S)?/g).join("");
     },
+    changeFirstName(state, payload){
+      state.profileFirstName = payload;
+    },
+    changeLastName(state,payload){
+      state.profileLastName = payload;
+    },
+    changeUsername(state,payload){
+      state.profileUsername = payload;
+    }
 
   },
   actions: {
@@ -52,7 +61,10 @@ export default new Vuex.Store({
       commit("setProfileInfo", dbResults);
       commit("setProfileInitials");
       console.log(dbResults);
-    }
+    },
+      async updateUserSettings({commit,state}){
+        const dataBase = await db.collection('users').doc()
+      }
   },
   modules: {
   }

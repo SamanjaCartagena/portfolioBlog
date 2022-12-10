@@ -48,6 +48,11 @@ import linkedin from '../assets/Icons/linkedin-brands.svg';
 export default {
     components:{
         youTube, twitter, instagram,linkedin
+    },
+    computed:{
+        user(){
+            return this.$store.state.user;
+        }
     }
 
 }
